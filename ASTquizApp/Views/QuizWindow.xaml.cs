@@ -1,5 +1,6 @@
 ﻿using ASTquizApp.Data;
 using ASTquizApp.Models;
+using ASTquizApp.Services;
 using System.Windows;
 
 namespace ASTquizApp.Views
@@ -107,6 +108,43 @@ namespace ASTquizApp.Views
             }
 
             DisplayQuestion();
+        }
+
+        private void PreviousButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            SaveCurrentAnswer();
+            currentQuestionIndex--;
+            if (currentQuestionIndex < 0)
+            {
+                currentQuestionIndex = 0;
+                return;
+            }
+            DisplayQuestion();
+        }
+
+        private void FinishButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            SaveCurrentAnswer();
+
+            ResultService resultService =
+                new ResultService();
+
+            var result =
+                resultService.CalculateResult(
+                    QuizData.Questions,
+                    QuizData.Answers,
+                    QuizData.CandidateName);
+
+            ResultWindow window =
+                new ResultWindow(result);
+
+            window.Show();
+
+            this.Close();
         }
     }
 }
