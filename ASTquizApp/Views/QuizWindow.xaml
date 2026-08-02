@@ -4,8 +4,8 @@
         xmlns:resources="clr-namespace:ASTquizApp.Resources"
 
         Title="Quiz"
-        Height="500"
-        Width="700">
+        Height="Auto"
+        Width="Auto">
 
 
     <Grid Margin="25">
@@ -16,10 +16,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
 
-        <resources:CopyrightHeader/>
+        <resources:CopyrightHeader Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,6,0,0"/>
 
         <TextBlock
             Name="QuestionNumberText"

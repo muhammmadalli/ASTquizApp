@@ -1,6 +1,7 @@
-﻿using ASTquizApp.Models;
-using System.Windows;
+﻿using ASTquizApp.Data;
+using ASTquizApp.Models;
 using ASTquizApp.Services;
+using System.Windows;
 
 
 namespace ASTquizApp.Views
@@ -20,7 +21,7 @@ namespace ASTquizApp.Views
 
         private void ShowResult()
         {
-            ResultText.Text =
+            CandidateText.Text =
             "Candidate: "
             + result.CandidateName
             + "\n\nTotal Questions: "
@@ -45,6 +46,21 @@ namespace ASTquizApp.Views
 
             MessageBox.Show(
                 "PDF Created Successfully");
+        }
+
+        private void BackButton_Click(
+            object sender,
+            RoutedEventArgs e)
+        {
+            QuizData.Questions.Clear();
+            QuizData.Answers.Clear();
+            QuizData.CandidateName = "";
+            QuizSetupWindow setup =
+                new QuizSetupWindow();
+
+            setup.Show();
+
+            this.Close();
         }
     }
 }
