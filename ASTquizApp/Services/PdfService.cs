@@ -52,7 +52,8 @@ namespace ASTquizApp.Services
 
                         for (int i = 0; i < QuizData.Questions.Count; i++)
                         {
-                            var question =
+
+                            Question question =
                                 QuizData.Questions[i];
 
                             string candidateAnswer =
@@ -62,13 +63,22 @@ namespace ASTquizApp.Services
                                 :
                                 "Not Attempted";
 
+                            string candidateAnswerText =
+                                GetAnswerText(
+                                    question,
+                                    candidateAnswer);
+
+                            string correctAnswerText =
+                                GetAnswerText(
+                                    question,
+                                    question.CorrectAnswer);
+
                             column.Item()
                             .Text(
                             "Question "
                             + (i + 1)
-                            + "\n\n"
 
-                            + "Book: "
+                            + "\n\nBook: "
                             + question.Book
 
                             + "\nChapter: "
@@ -80,11 +90,34 @@ namespace ASTquizApp.Services
                             + "\n\n"
                             + question.QuestionText
 
+                            + "\n\nA. "
+                            + question.OptionA
+
+                            + "\nB. "
+                            + question.OptionB
+
+                            + "\nC. "
+                            + question.OptionC
+
+                            + "\nD. "
+                            + question.OptionD
+
                             + "\n\nCandidate Answer: "
-                            + candidateAnswer
+                            + candidateAnswerText
 
                             + "\nCorrect Answer: "
-                            + question.CorrectAnswer
+                            + correctAnswerText
+
+                            + "\nResult: "
+                            + (
+                                candidateAnswer ==
+                                question.CorrectAnswer
+                                ?
+                                "CORRECT"
+                                :
+                                "WRONG"
+                              )
+
                             );
 
 
@@ -92,7 +125,6 @@ namespace ASTquizApp.Services
                             .LineHorizontal(1f, Unit.Point);
 
                         }
-
                     });
 
                     page.Footer()
@@ -105,5 +137,35 @@ namespace ASTquizApp.Services
             })
             .GeneratePdf(fileName);
         }
+        private string GetAnswerText(
+        Question question,
+        string answer)
+        {
+
+            switch (answer)
+            {
+                case "A":
+                    return "A. "
+                    + question.OptionA;
+
+                case "B":
+                    return "B. "
+                    + question.OptionB;
+
+                case "C":
+                    return "C. "
+                    + question.OptionC;
+
+                case "D":
+                    return "D. "
+                    + question.OptionD;
+
+                default:
+                    return "Not Attempted";
+
+            }
+
+        }
+
     }
 }
