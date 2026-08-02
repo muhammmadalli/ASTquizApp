@@ -1,75 +1,89 @@
 ﻿<Window x:Class="ASTquizApp.Views.QuizSetupWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:resources="clr-namespace:ASTquizApp.Resources"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Quiz Setup"
         Height="450"
-        Width="600">
-
+        Width="600"
+        MinWidth="520"
+        MinHeight="360">
 
     <Grid Margin="20">
-
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/> <!-- Header -->
+            <RowDefinition Height="Auto"/> <!-- Candidate input -->
+            <RowDefinition Height="*"/>    <!-- Files list and actions -->
+            <RowDefinition Height="Auto"/> <!-- Start button -->
+            <RowDefinition Height="Auto"/> <!-- Footer / copyright -->
         </Grid.RowDefinitions>
 
+        <!-- Header -->
+        <TextBlock Grid.Row="0"
+                   Text="AST Quiz Test App"
+                   FontSize="28"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,8"/>
 
+        <!-- Candidate name input -->
+        <Grid Grid.Row="1" Margin="0,8,0,12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <TextBlock
-            Text="AST Quiz Test App"
-            FontSize="28"
-            FontWeight="Bold"
-            HorizontalAlignment="Center"/>
+            <TextBlock Text="Candidate Name:"
+                       FontSize="16"
+                       VerticalAlignment="Center"
+                       Grid.Column="0"
+                       Margin="0,0,10,0"/>
 
+            <TextBox Name="CandidateNameBox"
+                     Grid.Column="1"
+                     Height="30"
+                     VerticalAlignment="Center"/>
+        </Grid>
 
-        <StackPanel
-            Grid.Row="1"
-            Orientation="Horizontal"
-            Margin="0,20,0,0">
+        <!-- Files list and select button -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="220"/>
+            </Grid.ColumnDefinitions>
 
-            <TextBlock
-                Text="Candidate Name:"
-                FontSize="18"
-                VerticalAlignment="Center" Height="27"/>
+            <ListBox Name="FilesListBox"
+                     Grid.Column="0"
+                     Margin="0,0,12,0"/>
 
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+                <Button Name="SelectFilesButton"
+                        Content="Select Excel Files"
+                        Height="36"
+                        Margin="0,0,0,12"
+                        Click="SelectFilesButton_Click"/>
 
-            <TextBox
-                Name="CandidateNameBox"
-                Width="220"
-                Height="36"
-                Margin="15,0,0,0"/>
+                <TextBlock Text="Selected files will appear on the left."
+                           FontSize="12"
+                           Foreground="Gray"
+                           TextWrapping="Wrap"/>
+            </StackPanel>
+        </Grid>
 
-        </StackPanel>
+        <!-- Start button -->
+        <Button Grid.Row="3"
+                Name="StartQuizButton"
+                Content="Start Quiz"
+                Width="150"
+                Height="40"
+                HorizontalAlignment="Center"
+                Margin="0,14,0,14"
+                Click="StartQuizButton_Click"/>
 
-
-
-        <Button
-            Grid.Row="1"
-            Name="SelectFilesButton"
-            Content="Select Excel Files"
-            Height="40"
-            Margin="382,36,6,14"
-            Click="SelectFilesButton_Click"/>
-
-
-
-        <ListBox
-            Grid.Row="2"
-            Name="FilesListBox"/>
-
-
-
-        <Button
-            Grid.Row="3"
-            Name="StartQuizButton"
-            Content="Start Quiz"
-            Width="150"
-            Height="40"
-            Margin="0,20,0,0"
-            Click="StartQuizButton_Click"/>
-
+        <!-- Footer -->
+        <resources:CopyrightHeader Grid.Row="4"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"
+                                   Margin="0,6,0,0"/>
 
     </Grid>
 
