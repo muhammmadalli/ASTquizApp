@@ -1,5 +1,6 @@
 ﻿using ASTquizApp.Models;
 using System.Windows;
+using ASTquizApp.Services;
 
 
 namespace ASTquizApp.Views
@@ -31,6 +32,19 @@ namespace ASTquizApp.Views
             + "\n\nPercentage: "
             + result.Percentage.ToString("0.00")
             + "%";
+        }
+
+        private void GeneratePdfButton_Click(
+        object sender,
+        RoutedEventArgs e)
+        {
+            PdfService pdfService =
+                new PdfService();
+
+            pdfService.CreateResultPdf(result);
+
+            MessageBox.Show(
+                "PDF Created Successfully");
         }
     }
 }
