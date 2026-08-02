@@ -2,7 +2,6 @@
 using ASTquizApp.Models;
 using System.Windows;
 
-
 namespace ASTquizApp.Views
 {
 
@@ -24,26 +23,20 @@ namespace ASTquizApp.Views
 
             if (QuizData.Answers.ContainsKey(currentQuestionIndex))
             {
-
                 string answer =
                     QuizData.Answers[currentQuestionIndex];
-
 
                 OptionARadio.IsChecked =
                     answer == "A";
 
-
                 OptionBRadio.IsChecked =
                     answer == "B";
-
 
                 OptionCRadio.IsChecked =
                     answer == "C";
 
-
                 OptionDRadio.IsChecked =
                     answer == "D";
-
             }
 
             Question question =
@@ -79,30 +72,22 @@ namespace ASTquizApp.Views
 
         private void SaveCurrentAnswer()
         {
-
             string answer = "";
-
 
             if (OptionARadio.IsChecked == true)
                 answer = "A";
 
-
             else if (OptionBRadio.IsChecked == true)
                 answer = "B";
-
 
             else if (OptionCRadio.IsChecked == true)
                 answer = "C";
 
-
             else if (OptionDRadio.IsChecked == true)
                 answer = "D";
 
-
-
             QuizData.Answers[currentQuestionIndex]
                 = answer;
-
         }
 
         private void NextButton_Click(
