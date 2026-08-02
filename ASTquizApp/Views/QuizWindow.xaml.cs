@@ -69,6 +69,14 @@ namespace ASTquizApp.Views
             OptionCRadio.IsChecked = false;
             OptionDRadio.IsChecked = false;
 
+            QuestionInfoText.Text =
+                "Book: "
+                + question.Book
+                + "\nChapter: "
+                + question.Chapter
+                + "\nTopic: "
+                + question.Topic;
+
         }
 
         private void SaveCurrentAnswer()
