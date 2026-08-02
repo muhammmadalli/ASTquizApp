@@ -22,6 +22,14 @@ namespace ASTquizApp.Views
 
         private void SelectFilesButton_Click(object sender, RoutedEventArgs e)
         {
+
+            PasswordWindow passwordWindow = new PasswordWindow();
+
+            bool? result1 = passwordWindow.ShowDialog();
+
+            if (result1 != true || !passwordWindow.IsAuthenticated)
+                return;
+
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter =
                 "Excel Files (*.xlsx)|*.xlsx";
