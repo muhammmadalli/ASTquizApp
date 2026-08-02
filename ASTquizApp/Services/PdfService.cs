@@ -1,4 +1,5 @@
-﻿using ASTquizApp.Models;
+﻿using ASTquizApp.Data;
+using ASTquizApp.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
@@ -36,29 +37,8 @@ namespace ASTquizApp.Services
 
                         column.Item()
                         .Text(
-                        "Candidate Name: "
+                        "Candidate: "
                         + result.CandidateName);
-
-                        column.Item()
-                        .Text(
-                        "Date: "
-                        + DateTime.Now.ToString(
-                        "dd-MMM-yyyy HH:mm"));
-
-                        column.Item()
-                        .Text(
-                        "Total Questions: "
-                        + result.TotalQuestions);
-
-                        column.Item()
-                        .Text(
-                        "Correct Answers: "
-                        + result.CorrectAnswers);
-
-                        column.Item()
-                        .Text(
-                        "Wrong Answers: "
-                        + result.WrongAnswers);
 
                         column.Item()
                         .Text(
@@ -66,6 +46,52 @@ namespace ASTquizApp.Services
                         + result.Percentage
                         .ToString("0.00")
                         + "%");
+
+                        column.Item()
+                        .LineHorizontal(1f, Unit.Point);
+
+                        for (int i = 0; i < QuizData.Questions.Count; i++)
+                        {
+                            var question =
+                                QuizData.Questions[i];
+
+                            string candidateAnswer =
+                                QuizData.Answers.ContainsKey(i)
+                                ?
+                                QuizData.Answers[i]
+                                :
+                                "Not Attempted";
+
+                            column.Item()
+                            .Text(
+                            "Question "
+                            + (i + 1)
+                            + "\n\n"
+
+                            + "Book: "
+                            + question.Book
+
+                            + "\nChapter: "
+                            + question.Chapter
+
+                            + "\nTopic: "
+                            + question.Topic
+
+                            + "\n\n"
+                            + question.QuestionText
+
+                            + "\n\nCandidate Answer: "
+                            + candidateAnswer
+
+                            + "\nCorrect Answer: "
+                            + question.CorrectAnswer
+                            );
+
+
+                            column.Item()
+                            .LineHorizontal(1f, Unit.Point);
+
+                        }
 
                     });
 
