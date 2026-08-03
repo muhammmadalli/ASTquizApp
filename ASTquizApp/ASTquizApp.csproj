@@ -36,6 +36,9 @@
     <None Update="Icon1.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="Resources\icon.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
