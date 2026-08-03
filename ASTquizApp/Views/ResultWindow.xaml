@@ -4,7 +4,7 @@
         xmlns:resources="clr-namespace:ASTquizApp.Resources"
         
         Title="AST Quiz Result"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen" Icon="/Icon1.ico">
 
     <Grid Margin="30">
 
