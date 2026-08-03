@@ -6,7 +6,7 @@
         Height="450"
         Width="600"
         MinWidth="520"
-        MinHeight="360" Icon="/Icon1.ico">
+        MinHeight="360">
 
     <Grid Margin="20">
         <Grid.RowDefinitions>

@@ -5,8 +5,7 @@
 
         Title="Quiz"
         Height="Auto"
-        Width="Auto" Icon="/Icon1.ico">
-
+        Width="Auto">
 
     <Grid Margin="25">
 
