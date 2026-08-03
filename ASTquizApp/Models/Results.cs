@@ -2,7 +2,7 @@
 {
     public class Result
     {
-        public string CandidateName { get; set; }
+        public string CandidateName { get; set; } = string.Empty;
 
         public int TotalQuestions { get; set; }
 
