@@ -3,6 +3,7 @@ using ASTquizApp.Models;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
+using Microsoft.Win32;
 
 
 namespace ASTquizApp.Services
@@ -13,10 +14,24 @@ namespace ASTquizApp.Services
         public void CreateResultPdf(Result result)
         {
 
-            string fileName =
-                "Quiz_Result_"
-                + result.CandidateName
-                + ".pdf";
+            SaveFileDialog saveDialog = new SaveFileDialog
+            {
+                Title = "Save Quiz Result",
+                Filter = "PDF Files (*.pdf)|*.pdf",
+                DefaultExt = ".pdf",
+                AddExtension = true,
+                FileName = $"Quiz_Result_{result.CandidateName}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf"
+            };
+
+            bool? dialogResult = saveDialog.ShowDialog();
+
+            if (dialogResult != true)
+            {
+                // User cancelled
+                return;
+            }
+
+            string fileName = saveDialog.FileName;
 
             Document.Create(container =>
             {
