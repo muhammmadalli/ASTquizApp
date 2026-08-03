@@ -8,6 +8,8 @@
     <UseWPF>true</UseWPF>
     <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
     <ApplicationIcon>Icon1.ico</ApplicationIcon>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +18,13 @@
 
   <ItemGroup>
     <Folder Include="Reports\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
