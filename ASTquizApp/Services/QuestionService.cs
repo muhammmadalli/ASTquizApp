@@ -5,14 +5,14 @@ namespace ASTquizApp.Services
     public class QuestionService
     {
 
-        public List<Question> GetRandomQuestions(List<Question> allQuestions)
+    public List<Question> GetRandomQuestions(
+        List<Question> questions,
+        int questionCount)
         {
-            Random rnd = new();
-
-            return allQuestions
-                    .OrderBy(x => rnd.Next())
-                    .Take(100)
-                    .ToList();
+            return questions
+                .OrderBy(x => Guid.NewGuid())
+                .Take(questionCount)
+                .ToList();
         }
     }
 }

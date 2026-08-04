@@ -12,6 +12,7 @@ namespace ASTquizApp.Views
     /// </summary>
     public partial class QuizSetupWindow : Window
     {
+        public int QuestionCount { get; set; } = 100;
         public List<string> SelectedFiles { get; set; }
             = new List<string>();
 
@@ -29,6 +30,8 @@ namespace ASTquizApp.Views
 
             if (result1 != true || !passwordWindow.IsAuthenticated)
                 return;
+
+            QuestionCount = passwordWindow.QuestionCount;
 
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter =
@@ -73,10 +76,10 @@ namespace ASTquizApp.Views
             List<Question> allQuestions =
                 excelService.LoadQuestions(SelectedFiles);
 
-            if (allQuestions.Count < 100)
+            if (allQuestions.Count < QuestionCount)
             {
                 MessageBox.Show(
-                    "Question bank contains less than 100 questions");
+                    $"Question bank contains only {allQuestions.Count} questions.");
                 return;
             }
 
@@ -85,7 +88,8 @@ namespace ASTquizApp.Views
 
             QuizData.Questions =
                 questionService.GetRandomQuestions(
-                    allQuestions);
+                    allQuestions,
+                    QuestionCount);
 
             QuizData.CandidateName = CandidateNameBox.Text;
 
