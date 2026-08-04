@@ -168,7 +168,7 @@ namespace ASTquizApp.Views
             ResultWindow window =
                 new ResultWindow(result);
 
-            window.Show();
+            window.ShowDialog();
 
             this.Close();
         }
