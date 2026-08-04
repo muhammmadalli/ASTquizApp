@@ -10,6 +10,8 @@ namespace ASTquizApp.Data
         public static List<Question> Questions { get; set; }
             = new List<Question>();
 
+        public static int TimeAllowedMinutes { get; set; } = 60;
+
         public static Dictionary<int, string> Answers { get; set; }
             = new Dictionary<int, string>();
     }

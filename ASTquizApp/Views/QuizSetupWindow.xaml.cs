@@ -32,6 +32,7 @@ namespace ASTquizApp.Views
                 return;
 
             QuestionCount = passwordWindow.QuestionCount;
+            QuizData.TimeAllowedMinutes = passwordWindow.TimeAllowedMinutes;
 
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter =
