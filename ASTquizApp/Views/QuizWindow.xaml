@@ -19,6 +19,13 @@
 
         </Grid.RowDefinitions>
 
+        <TextBlock x:Name="TimerTextBlock"
+           Text="Time: 60:00"
+           FontSize="20"
+           FontWeight="Bold"
+           HorizontalAlignment="Right"
+           Margin="10"/>
+
         <resources:CopyrightHeader Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,6,0,0"/>
 
         <TextBlock

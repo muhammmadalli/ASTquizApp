@@ -2,6 +2,7 @@
 using ASTquizApp.Models;
 using ASTquizApp.Services;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace ASTquizApp.Views
 {
@@ -11,10 +12,19 @@ namespace ASTquizApp.Views
         private int currentQuestionIndex = 0;
 
         private List<Question> questions;
+        
+        private DispatcherTimer? quizTimer;
+        private int remainingSeconds;
 
         public QuizWindow()
         {
             InitializeComponent();
+
+            remainingSeconds =
+                QuizData.TimeAllowedMinutes * 60;
+
+            StartTimer();
+
             questions = QuizData.Questions;
             DisplayQuestion();
         }
@@ -136,6 +146,14 @@ namespace ASTquizApp.Views
             object sender,
             RoutedEventArgs e)
         {
+            SubmitQuiz();
+        }
+
+        private void SubmitQuiz()
+        {
+            if (quizTimer != null)
+                quizTimer.Stop();
+
             SaveCurrentAnswer();
 
             ResultService resultService =
@@ -154,5 +172,60 @@ namespace ASTquizApp.Views
 
             this.Close();
         }
+
+        private void StartTimer()
+        {
+            quizTimer = new DispatcherTimer();
+
+            quizTimer.Interval =
+                TimeSpan.FromSeconds(1);
+
+            quizTimer.Tick += QuizTimer_Tick;
+
+            quizTimer.Start();
+        }
+
+        private void QuizTimer_Tick(
+            object? sender,
+            EventArgs e)
+            {
+            remainingSeconds--;
+
+            int minutes =
+                remainingSeconds / 60;
+
+            int seconds =
+                remainingSeconds % 60;
+
+
+            TimerTextBlock.Text =
+                $"Time: {minutes:00}:{seconds:00}";
+
+
+            if (remainingSeconds <= 0)
+            {
+                quizTimer?.Stop();
+
+                MessageBox.Show(
+                    "Time is over. Quiz will be submitted.",
+                    "Time Finished",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+
+                SubmitQuiz();
+            }
+        }
+
+
+        protected override void OnClosed(EventArgs e)
+        {
+            if (quizTimer != null)
+            {
+                quizTimer.Stop();
+            }
+
+            base.OnClosed(e);
+        }
+
     }
 }
