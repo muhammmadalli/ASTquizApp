@@ -927,6 +927,17 @@
             "Property" = "8:ProgramMenuFolder"
                 "Folders"
                 {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_801DFD327D134AE49E845FEA50A4C2F1"
+                    {
+                    "Name" = "8:AST Quiz App"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_695F751729EB49DFB30F042686229CF5"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_FC4EA2B96F9F40BDA6A3B47B516D2912"
@@ -979,15 +990,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:astQuizApp"
-        "ProductCode" = "8:{D83D4BEC-B6CF-4DC5-B9DB-0C3EEFD34101}"
-        "PackageCode" = "8:{02956871-6A49-4EC8-9791-38DF0E5B854E}"
+        "ProductCode" = "8:{80FCB081-333B-49AF-850F-443A75A32506}"
+        "PackageCode" = "8:{D2C3E7D0-E005-448E-B915-86EB24481800}"
         "UpgradeCode" = "8:{5C36EFFB-BF4B-435D-816F-B29EF260585C}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.2"
+        "ProductVersion" = "8:1.0.21"
         "Manufacturer" = "8:muhammmadali"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1100,6 +1111,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_39723EE1BB3042D294696A395F84566F"
+            {
+            "Name" = "8:AST Quiz App"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_569A52C321734DC6A1113E8B626F6283"
+            "Folder" = "8:_801DFD327D134AE49E845FEA50A4C2F1"
+            "WorkingFolder" = "8:_FC4EA2B96F9F40BDA6A3B47B516D2912"
+            "Icon" = "8:_5D86D744F4D7484491B4F0BBEA862D14"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
