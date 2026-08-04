@@ -121,7 +121,7 @@ namespace ASTquizApp.Views
             {
                 MessageBox.Show(
                     "Quiz Completed");
-                Close();
+                SubmitQuiz();
                 return;
             }
 
