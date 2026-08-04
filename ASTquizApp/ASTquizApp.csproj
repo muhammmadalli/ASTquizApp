@@ -49,7 +49,7 @@
     <SelfContained>true</SelfContained>
     <PublishSingleFile>true</PublishSingleFile>
     <PublishTrimmed>false</PublishTrimmed>
-    <Version>$(VersionPrefix)1.0.2</Version>
+    <Version>$(VersionPrefix)1.0.23</Version>
   </PropertyGroup>
 
 </Project>
